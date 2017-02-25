@@ -6,23 +6,25 @@ const Docker = require('dockerode');
 
 var docker = new Docker({socketPath: '/var/run/docker.sock'});
 
-// adds debug features like hotkeys for triggering dev tools and reload
-require('electron-debug')();
-
-ipc.on('addContainer', function(e, data) {
-  docker.createContainer(
-    {Image: 'ubuntu', Cmd: ['/bin/bash'], name: 'ubuntu-test'},
-    function(err, container) {
-      if (err) {
-        console.log(err);
-      }
+ipc.on('addContainerSend', function(event, data) {
+  docker.createContainer({
+    Image: 'hello-world', Tty: true, Cmd: ['/bin/bash']
+  }, function(err, container) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("no error")
     }
-  )
+
+  });
+
+  event.sender.send('addContainerReceive', 'got created!');
 });
 
 
 
-
+// adds debug features like hotkeys for triggering dev tools and reload
+require('electron-debug')();
 
 // prevent window being garbage collected
 let mainWindow;
