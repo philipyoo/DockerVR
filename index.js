@@ -2,9 +2,28 @@
 const electron = require('electron');
 const app = electron.app;
 const ipc = require('electron').ipcMain;
+const Docker = require('dockerode');
+
+var docker = new Docker({socketPath: '/var/run/docker.sock'});
+
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
+
+ipc.on('addContainer', function(e, data) {
+  docker.createContainer(
+    {Image: 'ubuntu', Cmd: ['/bin/bash'], name: 'ubuntu-test'},
+    function(err, container) {
+      if (err) {
+        console.log(err);
+      }
+    }
+  )
+});
+
+
+
+
 
 // prevent window being garbage collected
 let mainWindow;
