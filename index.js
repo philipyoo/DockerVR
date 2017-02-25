@@ -6,6 +6,7 @@ const Docker = require('dockerode');
 
 var docker = new Docker({socketPath: '/var/run/docker.sock'});
 
+
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
 

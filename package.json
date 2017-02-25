@@ -12,7 +12,8 @@
   "files": [
     "index.js",
     "index.html",
-    "index.css"
+    "index.css",
+    "app.js"
   ],
   "keywords": [
     "electron",
