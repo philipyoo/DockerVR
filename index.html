@@ -1,26 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>DockerVR</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
-  </head>
-  <body>
-    <input type="text" name="name">
-    <a-scene>
-      <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>
-      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+<head>
+    <title>Docker VR</title>
+</head>
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+<script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+<script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+<script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+<body>
+<a-scene>
+        <a-assets>
+            <img id="boxImg" src="http://res.cloudinary.com/blog-mornati-net/image/upload/v1472668207/sz9sfwiji9foh0cv1v5p.png"/>
+            <img id="bkgrdImg"
+            src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+            <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+            <script id="link" type="text/html">
+        </script>
 
-      <a-sky color="#ECECEC"></a-sky>
-      <a-entity position="0 0 3.8">
-        <a-camera></a-camera>
-      </a-entity>
-    </a-scene>
+        </a-assets>
+<a-sky radius="10" src="#bkgrdImg"></a-sky>
+<a-box src="#boxImg" position="2 0 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+<a-box src="#boxImg" position="0 0 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+<a-box src="#boxImg" position="-2 0 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+<a-box src="#boxImg" position="-2 0 3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+<a-box src="#boxImg" position="0 0 3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+<a-box src="#boxImg" position="2 0 3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
 
-    <script src="app.js"></script>
-  </body>
+<a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          raycaster="objects: .link"></a-cursor>
+</a-entity>
+</a-scene>
+</body>
 </html>
