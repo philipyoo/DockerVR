@@ -26,10 +26,15 @@ cr.addEventListener('click', function(evt) {
     console.log("Got response back");
     console.log(res);
 
-    show_container = containers.shift();
+    if (res.code != 0) {
+      show_container = containers.shift();
+      show_container.setAttribute("height", 1);
+      cr.setAttribute('material', 'color', 'green');
+    } else {
+      cr.setAttribute('material', 'color', 'red');
+    }
 
     document.getElementById('cname').value = "";
-    show_container.setAttribute("height", 1);
   });
 
   var name = document.getElementById('cname');
