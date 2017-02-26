@@ -1,25 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>DockerVR</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
+<head>
+    <title>Docker VR</title>
+</head>
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+<script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+<script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+<script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+<!-- <link rel="stylesheet" href="city_scape.css" type="text/css"/> -->
+<body>
+  <span>Ghetto Input: </span><input type="text" name="name" id="cname">
+  <a-scene>
+    <a-assets>
+        <img id="boxImg" src="http://res.cloudinary.com/blog-mornati-net/image/upload/v1472668207/sz9sfwiji9foh0cv1v5p.png"/>
+        <img id="bkgrdImg"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+    </a-assets>
 
-      <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>
-      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-
-      <a-sky color="#ECECEC"></a-sky>
-      <a-entity position="0 0 3.8">
-        <a-camera></a-camera>
+    <a-entity camera look-controls>
+      <a-cursor id="cursor"
+        position="0 0 -1"
+        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: black; shader: flat">
       </a-entity>
-    </a-scene>
+    </a-entity>
 
-    <script src="app.js"></script>
-  </body>
+    <a-sky radius="10" src="#bkgrdImg"></a-sky>
+
+    <!-- middle containers seen from the front-->
+    <a-box id="box1" src="#boxImg" position="2 0 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box2" src="#boxImg" position="0 0 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box3" src="#boxImg" position="-2 0 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+
+    <!-- top row containers seen from the front-->
+    <a-box id="box4" src="#boxImg" position="-2 2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box5" src="#boxImg" position="0 2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box6" src="#boxImg" position="2 2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <!--bottom row containers seen from the front-->
+    <a-box id="box7" src="#boxImg" position="2 -2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box8" src="#boxImg" position="0 -2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box9" src="#boxImg" position="-2 -2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+
+    <!-- containers seen from behind-->
+    <a-box src="#boxImg" id="box10" position="-2 0 3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box src="#boxImg" id="box11" position="0 0 3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box src="#boxImg" id="box12" position="2 0 3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+
+    <!--create button-->
+    <a-box src="#boxImg" id="create-sky" position="0 3.5 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+
+    <!-- <a-entity camera look-controls>
+      <a-cursor id="cursor"
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+        event-set__1="_event: mouseenter; color: springgreen"
+        event-set__2="_event: mouseleave; color: black"
+        raycaster="objects: .link"></a-cursor>
+    </a-entity> -->
+  </a-scene>
+
+
+  <script src="app.js"></script>
+</body>
 </html>

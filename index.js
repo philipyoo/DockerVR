@@ -2,6 +2,31 @@
 const electron = require('electron');
 const app = electron.app;
 const ipc = require('electron').ipcMain;
+const Docker = require('dockerode');
+
+var docker = new Docker({socketPath: '/var/run/docker.sock'});
+
+ipc.on('addContainerSend', function(event, data) {
+  var status = {code: 0, stat: "na"};
+
+  docker.createContainer({
+    Image: 'hello-world', Tty: true, Cmd: ['/bin/bash'], name: data
+  }, function(err, container) {
+    if (err) {
+      console.log(err);
+      status.code = 0;
+      status.stat = "Error";
+    } else {
+      console.log("no error")
+      status.code = 2;
+      status.stat = "Works"
+    }
+
+    event.sender.send('addContainerReceive', status);
+  });
+});
+
+
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
