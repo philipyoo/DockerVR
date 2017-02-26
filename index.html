@@ -10,7 +10,7 @@
 <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
 <!-- <link rel="stylesheet" href="city_scape.css" type="text/css"/> -->
 <body>
-  <input type="text" name="name" id="cname">
+  <span>Ghetto Input: </span><input type="text" name="name" id="cname">
   <a-scene>
     <a-assets>
         <img id="boxImg" src="http://res.cloudinary.com/blog-mornati-net/image/upload/v1472668207/sz9sfwiji9foh0cv1v5p.png"/>
@@ -30,23 +30,23 @@
     <a-sky radius="10" src="#bkgrdImg"></a-sky>
 
     <!-- middle containers seen from the front-->
-    <a-box id="box1" opacity="0" class="mid_row" src="#boxImg" position="2 0 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box id="box2" class="mid_row" src="#boxImg" position="0 0 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box id="box3" opacity="0" class="mid_row" src="#boxImg" position="-2 0 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+    <a-box id="box1" src="#boxImg" position="2 0 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box2" src="#boxImg" position="0 0 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box3" src="#boxImg" position="-2 0 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
 
     <!-- top row containers seen from the front-->
-    <a-box id="box4" class="top_row" src="#boxImg" position="-2 2 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box id="box5" opacity="0" class="top_row" src="#boxImg" position="0 2 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box id="box6" opacity="0" class="top_row" src="#boxImg" position="2 2 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+    <a-box id="box4" src="#boxImg" position="-2 2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box5" src="#boxImg" position="0 2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box6" src="#boxImg" position="2 2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
     <!--bottom row containers seen from the front-->
-    <a-box id="box7"  src="#boxImg" position="2 -2 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box opacity="0" id="box8" src="#boxImg" position="0 -2 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box opacity="0" id="box9" src="#boxImg" position="-2 -2 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+    <a-box id="box7" src="#boxImg" position="2 -2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box8" src="#boxImg" position="0 -2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box id="box9" src="#boxImg" position="-2 -2 -3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
 
     <!-- containers seen from behind-->
-    <a-box src="#boxImg" id="box10" position="-2 0 3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box src="#boxImg" id="box11" position="0 0 3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
-    <a-box src="#boxImg" id="box12" position="2 0 3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>
+    <a-box src="#boxImg" id="box10" position="-2 0 3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box src="#boxImg" id="box11" position="0 0 3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
+    <a-box src="#boxImg" id="box12" position="2 0 3" rotation="0 0 0" width="1" height="0" depth="0"></a-box>
 
     <!--create button-->
     <a-box src="#boxImg" id="create-sky" position="0 3.5 -3" rotation="0 0 0" width="1" height="1" depth="0"></a-box>

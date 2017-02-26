@@ -21,9 +21,9 @@ ipc.on('addContainerSend', function(event, data) {
       status.code = 2;
       status.stat = "Works"
     }
-  });
 
-  event.sender.send('addContainerReceive', status);
+    event.sender.send('addContainerReceive', status);
+  });
 });
 
 
