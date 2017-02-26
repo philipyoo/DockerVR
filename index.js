@@ -7,18 +7,23 @@ const Docker = require('dockerode');
 var docker = new Docker({socketPath: '/var/run/docker.sock'});
 
 ipc.on('addContainerSend', function(event, data) {
+  var status = {code: 0, stat: "na"};
+
   docker.createContainer({
-    Image: 'hello-world', Tty: true, Cmd: ['/bin/bash']
+    Image: 'hello-world', Tty: true, Cmd: ['/bin/bash'], name: data
   }, function(err, container) {
     if (err) {
       console.log(err);
+      status.code = 0;
+      status.stat = "Error";
     } else {
       console.log("no error")
+      status.code = 2;
+      status.stat = "Works"
     }
-
   });
 
-  event.sender.send('addContainerReceive', 'got created!');
+  event.sender.send('addContainerReceive', status);
 });
 
 
